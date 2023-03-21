@@ -1,1 +1,1 @@
-# battleship
+This is a web version of the board game battleship. It is built using vanilla javascript, html, and css. Jest is used to practice unit testing and to follow TDD.
