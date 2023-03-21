@@ -10,12 +10,12 @@ test('check missing an attack', () => {
 });
 
 test('check hitting an attack', () => {
-    expect(currentBoard.receiveAttack([0, 1])).toBe('hit');
+    expect(currentBoard.receiveAttack([0, 0])).toBe('hit');
 })
 
 test('check double hitting an attack', () => {
-    currentBoard.receiveAttack([0, 1]);
-    expect(currentBoard.receiveAttack([0, 1])).toBe('double hit');
+    currentBoard.receiveAttack([1, 0]);
+    expect(currentBoard.receiveAttack([1, 0])).toBe('double hit');
 });
 
 test('check double missing an attack', () => {
@@ -29,8 +29,14 @@ test('check all sunk is default false', () => {
 
 test('check all sunk is true', () => {
     currentBoard.receiveAttack([0, 0]);
-    currentBoard.receiveAttack([0, 1]);
-    currentBoard.receiveAttack([0, 2]);
-    currentBoard.receiveAttack([0, 3]);
+    currentBoard.receiveAttack([1, 0]);
+    currentBoard.receiveAttack([2, 0]);
+    currentBoard.receiveAttack([3, 0]);
     expect(currentBoard.areAllSunk()).toBe(true);
 });
+
+test('check adding boat in y direction', () => {
+    const shipTwo = ship(3);
+    currentBoard.placeShip(shipTwo, [3,3], true);
+    expect(currentBoard.receiveAttack([3, 5])).toBe('hit');
+})

@@ -19,12 +19,12 @@ const gameBoard = () => {
         var startingY = startingCoor[1];
         if (yDirection) {
             for (let i = 0; i < shipLength; i++) {
-                boardArray[startingY][startingX+i] = [shipObject, null];
+                boardArray[startingY+i][startingX] = [shipObject, null];
             }
         }
         else {
             for (let i = 0; i < shipLength; i++) {
-                boardArray[startingY+i][startingX] = [shipObject, null];
+                boardArray[startingY][startingX+i] = [shipObject, null];
             }
         }
         shipList.push(shipObject);
