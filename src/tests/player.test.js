@@ -2,7 +2,8 @@ import player from "../factories/playerFactory"
 import gameboard from "../factories/gameboardFactory"
 import ship from "../factories/shipFactory"
 
-const firstPlayer = player('Reese');
+const playerGameboard = gameboard();
+const firstPlayer = player('Reese', playerGameboard);
 const enemyGameboard = gameboard();
 const enemyShip = ship(5);
 enemyGameboard.placeShip(enemyShip, [0,3]);

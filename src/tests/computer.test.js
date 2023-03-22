@@ -2,7 +2,8 @@ import computerPlayer from "../helpers/computerPlayer"
 import gameboard from "../factories/gameboardFactory"
 import ship from "../factories/shipFactory"
 
-const computer = computerPlayer('Computer');
+const computerGameboard = gameboard();
+const computer = computerPlayer('Computer', computerGameboard);
 const enemyGameboard = gameboard();
 const enemyShip = ship(5);
 enemyGameboard.placeShip(enemyShip, [0,3]);

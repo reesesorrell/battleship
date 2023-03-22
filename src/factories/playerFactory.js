@@ -1,5 +1,5 @@
 
-const player = (name) => {
+const player = (name, playerGameboard) => {
     const getName = () => {
         return name;
     }
@@ -8,7 +8,7 @@ const player = (name) => {
         return gameboard.receiveAttack(coors);
     }
 
-    return {getName, attack}
+    return {getName, attack, playerGameboard}
 }
 
 export default player;
