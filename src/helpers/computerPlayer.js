@@ -3,17 +3,19 @@ import player from "../factories/playerFactory";
 const computerPlayer = (newName, playerGameboard) => {
     const {getName, attack} = player(newName, playerGameboard);
 
-    var attackedArray = []
+    var unAttackedArray = []
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+            unAttackedArray.push([i, j]);
+        }
+    }
     const makeRandomAttack = (gameboard) => {
 
-        var xCoor, yCoor;
-        do {
-            xCoor = Math.floor(Math.random() * 10);
-            yCoor = Math.floor(Math.random() * 10);
-        } while(attackedArray.includes(''+xCoor+yCoor));
+        let index = Math.floor(Math.random()*unAttackedArray.length)
+        let coor = unAttackedArray[index];
+        unAttackedArray.splice(index, 1);
 
-        attackedArray.push(''+xCoor+yCoor);
-        return attack(gameboard, [xCoor, yCoor]);
+        return attack(gameboard, coor);
     }
 
     return {getName, makeRandomAttack, playerGameboard}
