@@ -32,11 +32,12 @@ const game = (playerName) => {
 
     const takeTurn = (coors) => {
         if (isPlayerTurn) {
-            var attackResponse = realPlayer.attack(computerGameboard, coors);
-            return attackResponse;
+            isPlayerTurn = false;
+            return realPlayer.attack(computerGameboard, coors);
         }
         else {
-            aiPlayer.makeRandomAttack(playerGameboard);
+            isPlayerTurn = true;
+            return aiPlayer.makeRandomAttack(playerGameboard);
         }
     }
 
@@ -46,7 +47,19 @@ const game = (playerName) => {
         }
     }
 
-    return {setUpTestGame, takeTurn}
+    const checkPlayerWin = () => {
+        if (computerGameboard.areAllSunk()) {
+            return true;
+        }
+    }
+
+    const checkComputerWin = () => {
+        if (playerGameboard.areAllSunk()) {
+            return true;
+        }
+    }
+
+    return {setUpTestGame, takeTurn, checkPlayerWin, checkComputerWin}
 }
 
 export default game;

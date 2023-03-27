@@ -15,7 +15,7 @@ const computerPlayer = (newName, playerGameboard) => {
         let coor = unAttackedArray[index];
         unAttackedArray.splice(index, 1);
 
-        return attack(gameboard, coor);
+        return [attack(gameboard, coor), coor];
     }
 
     return {getName, makeRandomAttack, playerGameboard}

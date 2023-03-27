@@ -39,7 +39,9 @@ const gameBoard = () => {
         }
         else if (currentSpot) {
             if (!currentSpot[1]) {
-                _trackHit(xCoor, yCoor);
+                if(_trackHit(xCoor, yCoor)) {
+                    return 'sunk';
+                }
                 return 'hit';
             }
             else {
@@ -65,6 +67,9 @@ const gameBoard = () => {
         const shipObject = boardArray[yCoor][xCoor][0];
         shipObject.hit();
         boardArray[yCoor][xCoor][1] = 'hit';
+        if (shipObject.isSunk()) {
+            return true;
+        }
     }
 
     const _trackMiss = (xCoor, yCoor) => {
